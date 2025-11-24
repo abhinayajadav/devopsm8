@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: experiment-api-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: experiment-api
+  template:
+    metadata:
+      labels:
+        app: experiment-api
+    spec:
+      containers:
+        - name: experiment-api
+          image: experiment-api:1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
